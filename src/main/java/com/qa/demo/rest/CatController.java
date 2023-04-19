@@ -22,14 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CatController {
 
-    private List<Cat> cats = new ArrayList<>();
-
     // No variables
     @PostMapping("/create")
     public ResponseEntity<Cat> createCat(@RequestBody Cat newCat) {
-
-        cats.add(newCat);
-        Cat createdCat = cats.get(cats.size() - 1);
 
         return new ResponseEntity<>(createdCat, HttpStatus.CREATED);
     }
@@ -41,30 +36,24 @@ public class CatController {
             @RequestParam(name="evil", required=false) Boolean evil,
             @RequestParam(name="length", required=false) Double length) {
 
-        Cat catChange = cats.get(id);
-        if(name != null) catChange.setName(name); ;
-        if(hasWhiskers != null) catChange.setHasWhiskers(hasWhiskers);
-        if(evil != null) catChange.setEvil(evil);
-        if(length != null) catChange.setLength(length);
-
-        return catChange;
+       
     }
 
     // ID sent as path variable (not query)
     @DeleteMapping("/remove/{id}")
     public Cat deleteCat(@PathVariable int id) {
-        return this.cats.remove(id);
+        
     }
 
     // ID sent as path variable (not query)
     @GetMapping("/get/{id}")
-    public Cat get(@PathVariable int id) {
-        return this.cats.get(id);
+    public Cat getByID(@PathVariable int id) {
+        
     }
 
     @GetMapping("/getAll")
     public List<Cat> getAll() {
-        return this.cats;
+        
     }
     
     // Test method - browsers will run this initially

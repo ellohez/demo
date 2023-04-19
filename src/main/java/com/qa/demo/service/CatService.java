@@ -6,7 +6,7 @@ import com.qa.demo.domain.Cat;
 public interface CatService {
     
     // All methods are public and abstract by default
-    Cat createCat(cat c);
+    Cat createCat(Cat c);
     Cat getByID(int id);
     Cat updateCat(Cat cat);
     Cat deleteCat(int id);
