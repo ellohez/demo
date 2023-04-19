@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,6 +20,16 @@ public class CatController {
 
         this.cats.add(newCat);
         return this.cats.get(cats.size() - 1);
+    }
+
+    @GetMapping("/get/{id}")
+    public Cat get(@PathVariable int id) {
+        return this.cats.get(id);
+    }
+
+    @GetMapping("/getAll")
+    public List<Cat> getAll() {
+        return this.cats;
     }
     
     @GetMapping("/") 
