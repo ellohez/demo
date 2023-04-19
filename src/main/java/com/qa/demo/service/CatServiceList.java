@@ -2,8 +2,6 @@ package com.qa.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.qa.demo.domain.Cat;
@@ -24,6 +22,7 @@ public class CatServiceList implements CatService {
     @Override
     public Cat deleteCat(int id) {
         return this.cats.remove(id);
+        // return this.cats.remove(id);
     }
 
     @Override

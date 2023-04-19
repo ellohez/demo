@@ -1,12 +1,5 @@
 package com.qa.demo.rest;
 
-import com.qa.demo.domain.Cat;
-import com.qa.demo.service.CatService;
-
-import io.micrometer.core.ipc.http.HttpSender.Response;
-import jakarta.websocket.server.PathParam;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -19,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.qa.demo.domain.Cat;
+import com.qa.demo.service.CatService;
 
 @RestController
 public class CatController {
