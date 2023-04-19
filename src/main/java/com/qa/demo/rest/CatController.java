@@ -1,6 +1,7 @@
 package com.qa.demo.rest;
 
 import com.qa.demo.domain.Cat;
+import com.qa.demo.service.CatService;
 
 import io.micrometer.core.ipc.http.HttpSender.Response;
 import jakarta.websocket.server.PathParam;
@@ -22,10 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CatController {
 
+    private CatService service;
+
+    public CatController(CatService service) {
+        this.service = service;
+    }
+
     // No variables
     @PostMapping("/create")
     public ResponseEntity<Cat> createCat(@RequestBody Cat newCat) {
 
+        Cat createdCat = this.service.createCat(newCat);
         return new ResponseEntity<>(createdCat, HttpStatus.CREATED);
     }
 
@@ -36,24 +44,28 @@ public class CatController {
             @RequestParam(name="evil", required=false) Boolean evil,
             @RequestParam(name="length", required=false) Double length) {
 
-       
+       Cat changedCat = this.service.updateCat(id, name, hasWhiskers, evil, length);
+       return changedCat;
     }
 
     // ID sent as path variable (not query)
     @DeleteMapping("/remove/{id}")
     public Cat deleteCat(@PathVariable int id) {
-        
+
+        return this.service.deleteCat(id);
     }
 
     // ID sent as path variable (not query)
     @GetMapping("/get/{id}")
     public Cat getByID(@PathVariable int id) {
         
+        return this.service.getByID(id);
     }
 
     @GetMapping("/getAll")
     public List<Cat> getAll() {
         
+        return this.service.getAll();
     }
     
     // Test method - browsers will run this initially

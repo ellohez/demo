@@ -4,16 +4,17 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.qa.demo.domain.Cat;
 
-
+@Service
 public class CatServiceList implements CatService {
 
     private List<Cat> cats = new ArrayList<>();
 
     @Override
-    public Cat createCat(cat c) {
+    public Cat createCat(Cat c) {
         cats.add(c);
         Cat createdCat = cats.get(cats.size() - 1);
 
@@ -36,7 +37,7 @@ public class CatServiceList implements CatService {
     }
 
     @Override
-    public Cat updateCat(String name, Boolean hasWhiskers, Boolean evil, Double length) {
+    public Cat updateCat(int id, String name, Boolean hasWhiskers, Boolean evil, Double length) {
         Cat catChange = cats.get(id);
         if(name != null) catChange.setName(name); ;
         if(hasWhiskers != null) catChange.setHasWhiskers(hasWhiskers);

@@ -8,8 +8,7 @@ public interface CatService {
     // All methods are public and abstract by default
     Cat createCat(Cat c);
     Cat getByID(int id);
-    Cat updateCat(Cat cat);
     Cat deleteCat(int id);
     List<Cat> getAll();
-    Cat updateCat(String name, Boolean hasWhiskers, Boolean evil, Double length);
+    Cat updateCat(int id, String name, Boolean hasWhiskers, Boolean evil, Double length);
 }
