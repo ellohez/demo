@@ -2,11 +2,14 @@ package com.qa.demo.rest;
 
 import com.qa.demo.domain.Cat;
 
+import io.micrometer.core.ipc.http.HttpSender.Response;
 import jakarta.websocket.server.PathParam;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,10 +26,12 @@ public class CatController {
 
     // No variables
     @PostMapping("/create")
-    public Cat createCat(@RequestBody Cat newCat) {
+    public ResponseEntity<Cat> createCat(@RequestBody Cat newCat) {
 
-        this.cats.add(newCat);
-        return this.cats.get(cats.size() - 1);
+        cats.add(newCat);
+        Cat createdCat = cats.get(cats.size() - 1);
+
+        return new ResponseEntity<>(createdCat, HttpStatus.CREATED);
     }
 
     @PatchMapping("/update/{id}")
