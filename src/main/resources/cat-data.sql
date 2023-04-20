@@ -1,2 +1,2 @@
 insert into cat (evil, length, name) 
-VALUES (true, true, 10, "Salem");
+values (true, true, 10, "Salem");
