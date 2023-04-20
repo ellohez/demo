@@ -46,4 +46,7 @@ public class CatServiceList implements CatService {
         return catChange;
     }
     
+    // List<Cat> findByName(String name) {
+
+    // }
 }

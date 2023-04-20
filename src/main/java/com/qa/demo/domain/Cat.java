@@ -2,13 +2,14 @@ package com.qa.demo.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Cat {
 
     @Id 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private boolean hasWhiskers;
@@ -21,6 +22,14 @@ public class Cat {
     }
 
     public Cat(String name, boolean hasWhiskers, boolean evil, double length) {
+        this.name = name;
+        this.hasWhiskers = hasWhiskers;
+        this.evil = evil;
+        this.length = length;
+    }
+    
+    public Cat(Long id, String name, boolean hasWhiskers, boolean evil, double length) {
+        this.id = id;
         this.name = name;
         this.hasWhiskers = hasWhiskers;
         this.evil = evil;
