@@ -25,6 +25,30 @@ public class CatServiceDBTest {
     private CatRepo repo;
 
     @Test
+    void testCreate() {
+        int id = 2;
+        Cat newCat = new Cat((long)id, "Jason Mieowa", true, true, 4.5); 
+        
+        Mockito.when(this.repo.save(newCat)).thenReturn(newCat);
+
+        assertEquals(newCat, this.service.createCat(newCat));
+    }
+
+    @Test
+    void testDelete() {
+        int id = 1;
+        Cat deadCat = new Cat((long)id, "Cindy Clawford", false, true, 10);
+
+        // Mock the repo methods that will be called as we are testing 
+        //  CatServiceDB not the CatRepo
+        Mockito.when(this.repo.findById((long)id)).thenReturn(Optional.of(deadCat));
+        // Mockito.when(this.repo.deleteById((long)id));
+
+        assertEquals(deadCat, this.service.deleteCat(id));
+    }
+
+
+    @Test
     void testUpdate() {
 
         // This relies on the Cat.Equals() method to compare the mocked cat to the actual cat
