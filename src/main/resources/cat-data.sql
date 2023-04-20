@@ -1,2 +1,2 @@
-insert into cat (evil, length, name) 
-values (true, true, 10, "Salem");
+insert into cat (evil, has_whiskers, length, name) 
+values (true, false, 10, 'Salem');
