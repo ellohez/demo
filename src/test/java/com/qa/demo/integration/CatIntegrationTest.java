@@ -1,4 +1,4 @@
-package com.qa.demo;
+package com.qa.demo.integration;
 
 import java.util.ArrayList;
 import java.util.List;
