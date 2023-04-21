@@ -25,6 +25,11 @@ public class CatServiceDBTest {
     private CatRepo repo;
 
     @Test
+    void testGetById() {
+        
+    }
+
+    @Test
     void testCreate() {
         int id = 2;
         Cat newCat = new Cat((long)id, "Jason Mieowa", true, true, 4.5); 
